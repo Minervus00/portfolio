@@ -1,0 +1,234 @@
+{
+  "informations_personnelles": {
+    "nom": "Soutongnoma Alex Fayçal OUEDRAOGO",
+    "titre": "Ingénieur AI/ML/Data Science Junior",
+    "email": "fayouedraogo@protonmail.com",
+    "telephone": "+226 60 66 88 65 / 05 29 55 50",
+    "adresse": "Ouagadougou, Burkina Faso",
+    "photo": "/images/pp.png"
+  },
+  "resume_professionnel": {
+    "description": "Élève-ingénieur en dernière année de cycle ingénieur informatique, passionné de tout ce qui a trait à la technologie, à la science des données et à l'intelligence artificielle. Travailleur, perspicace et motivé par la résolution de problèmes complexes.",
+    "objectif": "Rechercher un stage de fin d'études en IA (durée de 4 à 6 mois)."
+  },
+  "competences_techniques": [
+    {
+      "categorie": "Langages de programmation",
+      "technologies": ["Python", "JavaScript", "SQL", "R", "C++", "Java"]
+    },
+    {
+      "categorie": "Bibliothèques & Frameworks",
+      "technologies": [
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+        "Scikit-learn",
+        "TensorFlow",
+        "Keras",
+        "PyTorch",
+        "FastAPI",
+        "Streamlit"
+      ]
+    },
+    {
+      "categorie": "Intelligence Artificielle & Machine Learning",
+      "technologies": [
+        "Deep Learning",
+        "Machine Learning",
+        "MLOps",
+        "Transformers",
+        "LLMs",
+        "Computer Vision",
+        "NLP",
+        "Reinforcement Learning"
+      ]
+    },
+    {
+      "categorie": "Big Data & Traitement de données",
+      "technologies": [
+        "Apache Spark",
+        "Hadoop",
+        "Airflow",
+        "Data Wrangling",
+        "ETL",
+        "Data Pipeline"
+      ]
+    },
+    {
+      "categorie": "Bases de données",
+      "technologies": [
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "SQLite"
+      ]
+    },
+    {
+      "categorie": "DevOps & Environnements",
+      "technologies": [
+        "Docker",
+        "Git/GitHub",
+        "Linux",
+        "VS Code",
+        "Jupyter Notebook",
+        "Google Colab"
+      ]
+    },
+    {
+      "categorie": "Outils de visualisation de données",
+      "technologies": [
+        "Power BI",
+        "Tableau",
+        "Matplotlib",
+        "Seaborn",
+        "Plotly"
+      ]
+    },
+    {
+      "categorie": "Cloud & APIs",
+      "technologies": [
+        "Google Cloud",
+        "Firebase",
+        "HuggingFace",
+        "OpenAI API",
+        "LangChain"
+      ]
+    }
+  ],
+  "formation": [
+    {
+      "diplome": "Cycle Ingénieur Informatique – Data Science et IA",
+      "etablissement": "École Polytechnique de Ouagadougou (EPO)",
+      "periode": "10/2022 – 11/2025",
+      "statut": "En cours"
+    },
+    {
+      "diplome": "Full Stack Software Engineering – Front End Specialization",
+      "etablissement": "ALX Africa",
+      "periode": "05/2022 – 09/2023"
+    },
+    {
+      "diplome": "CPGE Mathématiques - Physique",
+      "etablissement": "École Polytechnique de Ouagadougou (EPO)",
+      "periode": "10/2020 – 07/2022"
+    },
+    {
+      "diplome": "Baccalauréat série D",
+      "etablissement": "Collège Saint Jean-Baptiste de LaSalle",
+      "periode": "2020",
+      "mention": "Bien"
+    }
+  ],
+  "experiences_professionnelles": [
+    {
+      "poste": "Ingénieur AI/ML/Data Science Junior",
+      "entreprise": "Copernilabs",
+      "lieu": "Paris | Freelance",
+      "periode": "12/2024 – Aujourd'hui"
+    },
+    {
+      "poste": "Stagiaire IA",
+      "entreprise": "CITADEL-UVBF",
+      "periode": "08/2024 – 10/2024",
+      "description": [
+        "RAG Chatbot et générateur de quiz",
+        "Conférencier à l'Atelier CITADEL & Médias"
+      ]
+    },
+    {
+      "poste": "Vice-Président & Formateur",
+      "entreprise": "Club Informatique de l'EPO",
+      "periode": "03/2024 – 01/2025"
+    },
+    {
+      "poste": "Stagiaire en Génie Logiciel",
+      "entreprise": "NeXT's",
+      "periode": "09/2023 – 10/2023"
+    }
+  ],
+  "projets": [
+    {
+      "titre": "Contrôle d'accès par Vision par Ordinateur – Cas de l'uniforme de l'EPO",
+      "type": "Projet de Fin d'Année",
+      "periode": "11/2024",
+      "description": "Détection automatisée de l'uniforme via vision par ordinateur pour l'accès sécurisé au campus.",
+      "technologies": ["Computer Vision", "Machine Learning"],
+      "image": "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=600"
+    },
+    {
+      "titre": "RAG Chatbot et générateur de quiz",
+      "type": "Projet de stage",
+      "periode": "08/2024 – 10/2024",
+      "description": "Développement d'un chatbot basé sur RAG pour réponses et création automatique de quiz.",
+      "technologies": ["NLP", "LLMs", "RAG"],
+      "image": "https://images.pexels.com/photos/4126724/pexels-photo-4126724.jpeg?auto=compress&cs=tinysrgb&w=600"
+    }
+  ],
+  "certifications": [
+    {
+      "titre": "Neural Networks and Deep Learning",
+      "organisme": "DeepLearning.AI",
+      "date": "01/2025"
+    },
+    {
+      "titre": "Machine Learning Specialization",
+      "organisme": "DeepLearning.AI & Stanford University",
+      "date": "01/2024"
+    },
+    {
+      "titre": "CS50's Introduction to AI with Python",
+      "organisme": "Harvard University",
+      "date": "11/2023"
+    }
+  ],
+  "realisations": [
+    {
+      "titre": "Finaliste CAN de la Data Science – DataTour 2024",
+      "description": "Meilleure équipe nationale | Top 5 Africain",
+      "date": "12/2024"
+    },
+    {
+      "titre": "2ème prix du concours de programmation de la Semaine du Numérique 2023",
+      "date": "11/2023"
+    }
+  ],
+  "langues": [
+    {
+      "langue": "Français",
+      "niveau": "Langue natale"
+    },
+    {
+      "langue": "Anglais",
+      "niveau": "Niveau B2"
+    }
+  ],
+  "soft_skills": [
+    "Sens de l'analyse",
+    "Rigueur",
+    "Travail en équipe",
+    "Curiosité scientifique"
+  ],
+  "centres_interet": [
+    "Sport: Football, Athlétisme",
+    "Histoire et Géopolitique",
+    "Articles et actualité IA",
+    "Cinéma"
+  ],
+  "sections_portfolio": [
+    "Accueil",
+    "À propos",
+    "Compétences",
+    "Formation",
+    "Expérience",
+    "Projets",
+    "Certifications",
+    "Réalisations",
+    "Contact"
+  ],
+  "liens_professionnels": {
+    "github": "https://github.com/Minervus00",
+    "linkedin": "https://www.linkedin.com/in/faycal-ouedraogo-b21690268/",
+    "portfolio": "https://Minervus00.github.io/portfolio'"
+  }
+}

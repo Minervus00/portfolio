@@ -1,0 +1,104 @@
+---
+import portfolio from '@data/portfolio.json';
+const { projets } = portfolio;
+---
+
+<section id="projets" class="py-20 bg-white dark:bg-slate-800">
+  <div class="container mx-auto px-4">
+    <div data-aos="fade-up" class="mb-16 text-center">
+      <span class="inline-block py-1 px-3 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 text-sm font-medium mb-4">
+        Réalisations
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white font-heading">
+        Mes Projets
+      </h2>
+      <p class="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-slate-300">
+        Une sélection de projets en IA et Data Science.
+      </p>
+    </div>
+    
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {projets.map((projet, index) => (
+        <div 
+          class="flip-card h-96"
+          data-aos="fade-up"
+          data-aos-delay={index * 150}
+        >
+          <div class="flip-card-inner w-full h-full">
+            <!-- Front: Project Image -->
+            <div class="flip-card-front w-full h-full rounded-xl overflow-hidden shadow-lg group">
+              <div class="relative w-full h-full">
+                <img 
+                  src={projet.image} 
+                  alt={projet.titre} 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  <span class="text-white/80 text-sm mb-2">{projet.type} | {projet.periode}</span>
+                  <h3 class="text-xl font-bold text-white font-heading">{projet.titre}</h3>
+                  
+                  <!-- Flip card hint -->
+                  <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white text-xs flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                    </svg>
+                    Cliquez pour plus de détails
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Back: Project Details -->
+            <div class="flip-card-back w-full h-full rounded-xl shadow-lg bg-primary-600 p-6 flex flex-col justify-between">
+              <div>
+                <span class="text-primary-200 text-sm">{projet.type} | {projet.periode}</span>
+                <h3 class="text-xl font-bold text-white mb-4 font-heading">{projet.titre}</h3>
+                <p class="text-white/90 mb-4">{projet.description}</p>
+                
+                <h4 class="text-primary-200 text-sm font-medium mb-2">Technologies</h4>
+                <div class="flex flex-wrap gap-2">
+                  {projet.technologies.map(tech => (
+                    <span class="inline-block py-1 px-2 bg-white/10 rounded-md text-white text-xs">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <button class="mt-4 w-full py-2 bg-white rounded-lg text-primary-600 font-medium hover:bg-primary-50 transition-colors">
+                Voir détails
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .flip-card {
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner,
+  .flip-card:focus .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+</style>

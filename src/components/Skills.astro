@@ -1,0 +1,163 @@
+---
+import portfolio from '@data/portfolio.json';
+const { competences_techniques } = portfolio;
+
+// Technology icons mapping (all using CDN links)
+const techIcons = {
+  // Programming Languages
+  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "R": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg",
+  "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+  "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  
+  // Libraries & Frameworks
+  "Pandas": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg",
+  "NumPy": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
+  "TensorFlow": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+  "PyTorch": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+  "FastAPI": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+  "Matplotlib": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matplotlib/matplotlib-original.svg",
+  "Seaborn": "https://raw.githubusercontent.com/mwaskom/seaborn/master/doc/_static/logo-mark-lightbg.svg",
+  "Scikit-learn": "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+  "Keras": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Keras_logo.svg",
+  "Streamlit": "https://streamlit.io/images/brand/streamlit-mark-color.svg",
+  
+  // AI & ML (using appropriate icons from various sources)
+  "Deep Learning": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+  "Machine Learning": "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg",
+  "MLOps": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "Computer Vision": "https://upload.wikimedia.org/wikipedia/commons/5/53/OpenCV_Logo_with_text.png",
+  "NLP": "https://huggingface.co/front/assets/huggingface_logo.svg",
+  "Transformers": "https://huggingface.co/front/assets/huggingface_logo.svg",
+  "LLMs": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+  "Reinforcement Learning": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  
+  // Big Data
+  "Apache Spark": "https://spark.apache.org/images/spark-logo-trademark.png",
+  "Hadoop": "https://hadoop.apache.org/hadoop-logo.jpg",
+  "Airflow": "https://airflow.apache.org/docs/apache-airflow/stable/_images/pin_large.png",
+  
+  // Databases
+  "MySQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "PostgreSQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  "MongoDB": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+  "SQLite": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+  
+  // DevOps & Tools
+  "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+  "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  "Linux": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+  "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+  "Jupyter": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg",
+  
+  // Visualization
+  "Power BI": "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg",
+  "Tableau": "https://logos-world.net/wp-content/uploads/2021/10/Tableau-Symbol.png",
+  "Plotly": "https://images.plot.ly/logo/new-branding/plotly-logomark.png",
+  
+  // Cloud & APIs
+  "Google Cloud": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
+  "Firebase": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
+  "HuggingFace": "https://huggingface.co/front/assets/huggingface_logo.svg",
+  "OpenAI": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+  "LangChain": "https://python.langchain.com/img/brand/wordmark.png"
+};
+
+---
+<section class="py-16 bg-slate-50 dark:bg-slate-900">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 font-heading">
+        Compétences Techniques
+      </h2>
+      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+        Technologies et outils que j'utilise pour créer des solutions innovantes
+      </p>
+    </div>
+
+    <!-- Skills Categories -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {competences_techniques.map((category, index) => (
+        <div 
+          class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-700"
+          data-aos="fade-up"
+          data-aos-delay={index * 100}
+        >
+          <!-- Category Header -->
+          <div class="flex items-center mb-4">
+            <span class="text-2xl mr-3">{category.icon}</span>
+            <h3 class="text-lg font-semibold text-slate-800 dark:text-white font-heading">
+              {category.categorie}
+            </h3>
+          </div>
+          
+          <!-- Technology Pills -->
+          <div class="flex flex-wrap gap-2">
+            {category.technologies.map(tech => (
+              <div class="tech-pill group flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-700/50 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 border border-slate-200 dark:border-slate-600">
+                {techIcons[tech] ? (
+                  <img 
+                    src={techIcons[tech]} 
+                    alt={`${tech} icon`} 
+                    class="w-4 h-4 transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-4 h-4 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+                    <span class="text-xs text-primary-600 dark:text-primary-400 font-medium">
+                      {tech.charAt(0)}
+                    </span>
+                  </div>
+                )}
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300 whitespace-nowrap">
+                  {tech}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-pill {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .tech-pill:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tech-pill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .tech-pill:hover::before {
+    left: 100%;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .tech-pill {
+      transition: none;
+    }
+    
+    .tech-pill::before {
+      display: none;
+    }
+  }
+</style>
