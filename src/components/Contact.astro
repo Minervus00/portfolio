@@ -1,31 +1,74 @@
 ---
-import portfolio from '@data/portfolio.json';
+interface Props {
+  portfolio: any;
+  lang: 'en' | 'fr';
+}
+
+const { portfolio, lang } = Astro.props;
 const { informations_personnelles, liens_professionnels } = portfolio;
+
+const t = lang === 'fr'
+  ? {
+      eyebrow: 'Discussion',
+      heading: 'Prendre Contact',
+      subtitle: "Intéressé(e) par une collaboration ou des informations supplémentaires ? N'hésitez pas à me contacter.",
+      contactInfo: 'Informations de contact',
+      email: 'Email',
+      phone: 'Téléphone',
+      location: 'Localisation',
+      social: 'Réseaux sociaux',
+      name: 'Nom',
+      namePh: 'Votre nom',
+      emailPh: 'votre@email.com',
+      subject: 'Sujet',
+      subjectPh: 'Sujet de votre message',
+      message: 'Message',
+      messagePh: 'Votre message...',
+      send: 'Envoyer le message',
+    }
+  : {
+      eyebrow: 'Discussion',
+      heading: 'Get in Touch',
+      subtitle: 'Interested in collaborating or want more information? Feel free to reach out.',
+      contactInfo: 'Contact information',
+      email: 'Email',
+      phone: 'Phone',
+      location: 'Location',
+      social: 'Social media',
+      name: 'Name',
+      namePh: 'Your name',
+      emailPh: 'you@email.com',
+      subject: 'Subject',
+      subjectPh: 'Subject of your message',
+      message: 'Message',
+      messagePh: 'Your message...',
+      send: 'Send message',
+    };
 ---
 
 <section id="contact" class="py-20 bg-white dark:bg-slate-800">
   <div class="container mx-auto px-4">
     <div data-aos="fade-up" class="mb-16 text-center">
       <span class="inline-block py-1 px-3 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 text-sm font-medium mb-4">
-        Discussion
+        {t.eyebrow}
       </span>
       <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white font-heading">
-        Prendre Contact
+        {t.heading}
       </h2>
       <p class="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-slate-300">
-        Intéressé(e) par une collaboration ou des informations supplémentaires ? N'hésitez pas à me contacter.
+        {t.subtitle}
       </p>
     </div>
-    
+
     <div class="max-w-5xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
         <!-- Contact Info -->
         <div class="md:col-span-2" data-aos="fade-right">
           <div class="bg-slate-50 dark:bg-slate-700 p-6 rounded-xl">
             <h3 class="text-xl font-semibold text-slate-800 dark:text-white mb-6 font-heading">
-              Informations de contact
+              {t.contactInfo}
             </h3>
-            
+
             <ul class="space-y-6">
               <li class="flex items-start">
                 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400">
@@ -35,13 +78,13 @@ const { informations_personnelles, liens_professionnels } = portfolio;
                   </svg>
                 </div>
                 <div class="ml-4">
-                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">Email</h4>
+                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">{t.email}</h4>
                   <a href={`mailto:${informations_personnelles.email}`} class="text-primary-600 dark:text-primary-400 hover:underline">
                     {informations_personnelles.email}
                   </a>
                 </div>
               </li>
-              
+
               <li class="flex items-start">
                 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -49,13 +92,13 @@ const { informations_personnelles, liens_professionnels } = portfolio;
                   </svg>
                 </div>
                 <div class="ml-4">
-                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">Téléphone</h4>
+                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">{t.phone}</h4>
                   <a href={`tel:${informations_personnelles.telephone.split('/')[0].trim()}`} class="text-primary-600 dark:text-primary-400 hover:underline">
                     {informations_personnelles.telephone}
                   </a>
                 </div>
               </li>
-              
+
               <li class="flex items-start">
                 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -63,11 +106,11 @@ const { informations_personnelles, liens_professionnels } = portfolio;
                   </svg>
                 </div>
                 <div class="ml-4">
-                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">Localisation</h4>
+                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">{t.location}</h4>
                   <p class="text-slate-800 dark:text-white">{informations_personnelles.adresse}</p>
                 </div>
               </li>
-              
+
               <li class="flex items-start">
                 <div class="flex-shrink-0 h-10 w-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -75,11 +118,11 @@ const { informations_personnelles, liens_professionnels } = portfolio;
                   </svg>
                 </div>
                 <div class="ml-4">
-                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">Réseaux sociaux</h4>
+                  <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-300 mb-1">{t.social}</h4>
                   <div class="flex items-center space-x-3 mt-2">
-                    <a 
+                    <a
                       href={liens_professionnels.github}
-                      target="_blank" 
+                      target="_blank"
                       rel="noopener noreferrer"
                       class="text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                       aria-label="GitHub"
@@ -88,9 +131,9 @@ const { informations_personnelles, liens_professionnels } = portfolio;
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                       </svg>
                     </a>
-                    <a 
+                    <a
                       href={liens_professionnels.linkedin}
-                      target="_blank" 
+                      target="_blank"
                       rel="noopener noreferrer"
                       class="text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
                       aria-label="LinkedIn"
@@ -105,65 +148,65 @@ const { informations_personnelles, liens_professionnels } = portfolio;
             </ul>
           </div>
         </div>
-        
+
         <!-- Contact Form -->
         <div class="md:col-span-3" data-aos="fade-left">
-          <form id="contact-form" class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+          <form id="contact-form" class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md" data-mailto={informations_personnelles.email}>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <div>
-                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Nom</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
+                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t.name}</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
                   required
                   class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                  placeholder="Votre nom"
+                  placeholder={t.namePh}
                 />
               </div>
-              
+
               <div>
-                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
+                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t.email}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
                   required
                   class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                  placeholder="votre@email.com"
+                  placeholder={t.emailPh}
                 />
               </div>
             </div>
-            
+
             <div class="mb-6">
-              <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Sujet</label>
-              <input 
-                type="text" 
-                id="subject" 
-                name="subject" 
+              <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t.subject}</label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
                 required
                 class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                placeholder="Sujet de votre message"
+                placeholder={t.subjectPh}
               />
             </div>
-            
+
             <div class="mb-6">
-              <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="5" 
+              <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">{t.message}</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
                 required
                 class="w-full px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors"
-                placeholder="Votre message..."
+                placeholder={t.messagePh}
               ></textarea>
             </div>
-            
-            <button 
+
+            <button
               type="submit"
               class="w-full py-3 px-4 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
             >
-              Envoyer le message
+              {t.send}
             </button>
           </form>
         </div>
@@ -174,23 +217,21 @@ const { informations_personnelles, liens_professionnels } = portfolio;
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
-    
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // In a real implementation, you would add code here to handle the form submission
-        // For demo purposes, let's show a success message
-        const formElements = contactForm.elements;
-        for (let i = 0; i < formElements.length; i++) {
-          if (formElements[i].type !== 'submit') {
-            formElements[i].value = '';
-          }
-        }
-        
-        alert('Merci pour votre message ! Je vous répondrai dès que possible.');
-      });
-    }
+    const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+
+    contactForm?.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const recipient = contactForm.dataset.mailto || '';
+      const name = (document.getElementById('name') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
+      const subject = (document.getElementById('subject') as HTMLInputElement)?.value || '';
+      const message = (document.getElementById('message') as HTMLTextAreaElement)?.value || '';
+
+      const body = `${message}\n\n— ${name} (${email})`;
+      const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoUrl;
+    });
   });
 </script>

@@ -7,19 +7,21 @@ import Education from '../components/Education.astro';
 import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
 import Certifications from '../components/Certifications.astro';
+import Activities from '../components/Activities.astro';
 import Contact from '../components/Contact.astro';
 
-// Get the portfolio data
-import portfolio from '../data/portfolio.json';
+import portfolio from '../data/portfolio.en.json';
+const lang = 'en';
 ---
 
-<Layout>
-  <Hero />
-  <About />
-  <Skills />
-  <Education />
-  <Experience />
-  <Projects />
-  <Certifications />
-  <Contact />
+<Layout portfolio={portfolio} lang={lang}>
+  <Hero portfolio={portfolio} lang={lang} />
+  <About portfolio={portfolio} lang={lang} />
+  <Skills portfolio={portfolio} lang={lang} />
+  <Education portfolio={portfolio} lang={lang} />
+  <Experience portfolio={portfolio} lang={lang} />
+  <Projects portfolio={portfolio} lang={lang} />
+  <Certifications portfolio={portfolio} lang={lang} />
+  <Activities portfolio={portfolio} lang={lang} />
+  <Contact portfolio={portfolio} lang={lang} />
 </Layout>

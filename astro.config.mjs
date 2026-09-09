@@ -8,5 +8,12 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   site: 'https://Minervus00.github.io/portfolio',
   base: '/portfolio', // Update this to match your GitHub repository name
-  output: 'static'
+  output: 'static',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

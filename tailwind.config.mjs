@@ -3,6 +3,12 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
+    container: {
+      // Markup already applies `mx-auto px-4` manually everywhere `container`
+      // is used — only remove Tailwind's default per-breakpoint max-width cap
+      // (1536px at 2xl and up) so sections actually fill wide screens.
+      screens: {},
+    },
     extend: {
       colors: {
         primary: {

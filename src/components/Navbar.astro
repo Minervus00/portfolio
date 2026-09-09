@@ -1,41 +1,54 @@
 ---
-import { Image } from 'astro:assets';
-import portfolio from '@data/portfolio.json';
+interface Props {
+  portfolio: any;
+  lang: 'en' | 'fr';
+}
 
-const { sections_portfolio } = portfolio;
+const { portfolio, lang } = Astro.props;
+const { sections_portfolio, informations_personnelles } = portfolio;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-// Navigation items with href IDs
-const navItems = sections_portfolio.map(section => {
-  return {
-    name: section,
-    href: `#${section.toLowerCase().replace(/\s+/g, '-')}`
-  }
-});
+const wordmark = informations_personnelles.nom.split(' ')[0];
+const t = lang === 'fr'
+  ? { darkMode: 'Mode sombre', toggleMenu: 'Basculer le menu', toggleDark: 'Basculer le mode sombre' }
+  : { darkMode: 'Dark mode', toggleMenu: 'Toggle menu', toggleDark: 'Toggle dark mode' };
+
+const otherLangHref = lang === 'fr' ? `${base}/` : `${base}/fr/`;
+const otherLangLabel = lang === 'fr' ? 'EN' : 'FR';
 ---
 
 <header class="fixed w-full top-0 z-50 transition-all duration-300" id="main-header">
   <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-2">
-      <span class="text-xl font-bold font-heading text-primary-500">Alex<span class="text-accent-500">.dev</span></span>
+    <a href={`#home`} class="flex items-center space-x-2">
+      <span class="text-xl font-bold font-heading text-primary-500">{wordmark}<span class="text-accent-500">.ai</span></span>
     </a>
 
     <!-- Desktop Navigation -->
     <div class="hidden md:flex items-center space-x-6">
-      {navItems.map(item => (
-        <a 
-          href={item.href}
+      {sections_portfolio.map((item: { id: string; label: string }) => (
+        <a
+          href={`#${item.id}`}
           class="nav-link text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-300 font-medium text-sm tracking-wide"
         >
-          {item.name}
+          {item.label}
         </a>
       ))}
-      
+
+      <!-- Language Switch -->
+      <a
+        href={otherLangHref}
+        class="px-2.5 py-1 rounded-md border border-slate-300 dark:border-slate-600 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:border-primary-500 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+        aria-label="Switch language"
+      >
+        {otherLangLabel}
+      </a>
+
       <!-- Theme Toggle Button -->
-      <button 
-        id="theme-toggle" 
+      <button
+        id="theme-toggle"
         class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors duration-300"
-        aria-label="Toggle Dark Mode"
+        aria-label={t.toggleDark}
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
@@ -45,38 +58,45 @@ const navItems = sections_portfolio.map(section => {
         </svg>
       </button>
     </div>
-    
+
     <!-- Mobile Menu Button -->
-    <button 
-      id="menu-toggle" 
+    <button
+      id="menu-toggle"
       class="md:hidden p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
-      aria-label="Toggle Menu"
+      aria-label={t.toggleMenu}
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
   </nav>
-  
+
   <!-- Mobile Navigation Menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg absolute w-full">
     <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
-      {navItems.map(item => (
-        <a 
-          href={item.href}
+      {sections_portfolio.map((item: { id: string; label: string }) => (
+        <a
+          href={`#${item.id}`}
           class="mobile-nav-link py-2 text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
         >
-          {item.name}
+          {item.label}
         </a>
       ))}
-      
+
+      <a
+        href={otherLangHref}
+        class="py-2 text-slate-700 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors font-semibold"
+      >
+        {lang === 'fr' ? 'English' : 'Français'}
+      </a>
+
       <!-- Mobile Theme Toggle -->
       <div class="flex items-center justify-between py-2">
-        <span class="text-slate-700 dark:text-slate-300">Mode sombre</span>
-        <button 
-          id="mobile-theme-toggle" 
+        <span class="text-slate-700 dark:text-slate-300">{t.darkMode}</span>
+        <button
+          id="mobile-theme-toggle"
           class="p-2 rounded-full bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"
-          aria-label="Toggle Dark Mode"
+          aria-label={t.toggleDark}
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
@@ -134,10 +154,10 @@ const navItems = sections_portfolio.map(section => {
       const sectionTop = (section as HTMLElement).offsetTop;
       const sectionHeight = (section as HTMLElement).offsetHeight;
       const sectionId = section.getAttribute('id');
-      
+
       if (sectionId) {
         const navItems = document.querySelectorAll(`a[href="#${sectionId}"]`);
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           navItems.forEach(item => item.classList.add('text-primary-500', 'font-semibold'));
         } else {

@@ -9,28 +9,34 @@ import Footer from '@components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
+  portfolio: any;
+  lang: 'en' | 'fr';
   title?: string;
   description?: string;
   ogImage?: string;
 }
 
-const { 
-  title = "Alex Ouedraogo | AI/ML Engineer",
-  description = "Portfolio professionnel de Soutongnoma Alex Fayçal Ouedraogo, Ingénieur AI/ML/Data Science",
-  ogImage = "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600",
+const {
+  portfolio,
+  lang,
+  title = `${portfolio.informations_personnelles.nom} | ${portfolio.informations_personnelles.titre}`,
+  description = portfolio.resume_professionnel.description,
+  ogImage = `${import.meta.env.BASE_URL.replace(/\/$/, '')}${portfolio.informations_personnelles.photo}`,
 } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
-<html lang="fr" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
@@ -44,21 +50,43 @@ const {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
-    
+
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <ViewTransitions />
+
+    <!-- Auto-detect browser language once, then remember the choice -->
+    <script define:vars={{ base, lang }}>
+      (function () {
+        try {
+          var STORAGE_KEY = 'lang-pref';
+          var stored = localStorage.getItem(STORAGE_KEY);
+          if (!stored) {
+            var browserLang = (navigator.language || '').toLowerCase();
+            var prefersFrench = browserLang.indexOf('fr') === 0;
+            if (prefersFrench && lang !== 'fr') {
+              localStorage.setItem(STORAGE_KEY, 'fr');
+              window.location.replace(base + '/fr/' + window.location.search + window.location.hash);
+              return;
+            }
+            localStorage.setItem(STORAGE_KEY, prefersFrench ? 'fr' : 'en');
+          }
+        } catch (e) {
+          /* localStorage unavailable (e.g. privacy mode) — fall back to default locale silently */
+        }
+      })();
+    </script>
   </head>
-  <body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 transition-colors duration-300">
-    <Navbar />
+  <body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-50 transition-colors duration-300 overflow-x-hidden">
+    <Navbar portfolio={portfolio} lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
-    
+    <Footer portfolio={portfolio} lang={lang} />
+
     <!-- Load AOS library -->
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    
+
     <script>
       // Initialize AOS animations
       document.addEventListener('DOMContentLoaded', () => {
@@ -76,7 +104,7 @@ const {
       document.addEventListener('DOMContentLoaded', () => {
         const themeToggle = document.getElementById('theme-toggle');
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
+
         // Set initial theme based on user preference or saved setting
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme)) {
@@ -84,7 +112,7 @@ const {
         } else {
           document.documentElement.classList.remove('dark');
         }
-        
+
         // Theme toggle functionality
         if (themeToggle) {
           themeToggle.addEventListener('click', () => {

@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Skills from '../../components/Skills.astro';
+import Education from '../../components/Education.astro';
+import Experience from '../../components/Experience.astro';
+import Projects from '../../components/Projects.astro';
+import Certifications from '../../components/Certifications.astro';
+import Activities from '../../components/Activities.astro';
+import Contact from '../../components/Contact.astro';
+
+import portfolio from '../../data/portfolio.fr.json';
+const lang = 'fr';
+---
+
+<Layout portfolio={portfolio} lang={lang}>
+  <Hero portfolio={portfolio} lang={lang} />
+  <About portfolio={portfolio} lang={lang} />
+  <Skills portfolio={portfolio} lang={lang} />
+  <Education portfolio={portfolio} lang={lang} />
+  <Experience portfolio={portfolio} lang={lang} />
+  <Projects portfolio={portfolio} lang={lang} />
+  <Certifications portfolio={portfolio} lang={lang} />
+  <Activities portfolio={portfolio} lang={lang} />
+  <Contact portfolio={portfolio} lang={lang} />
+</Layout>

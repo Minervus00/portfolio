@@ -1,22 +1,45 @@
 ---
-import portfolio from '@data/portfolio.json';
-const { certifications, realisations } = portfolio;
+interface Props {
+  portfolio: any;
+  lang: 'en' | 'fr';
+}
+
+const { portfolio, lang } = Astro.props;
+const { certifications, honneurs } = portfolio;
+
+const t = lang === 'fr'
+  ? {
+      eyebrow: 'Validations',
+      heading: 'Certifications & Distinctions',
+      subtitle: 'Mes formations certifiées et mes accomplissements.',
+      certifications: 'Certifications',
+      honors: 'Distinctions',
+      cta: 'Discutons de vos projets',
+    }
+  : {
+      eyebrow: 'Credentials',
+      heading: 'Certifications & Honors',
+      subtitle: 'Certified training and achievements along the way.',
+      certifications: 'Certifications',
+      honors: 'Honors & Awards',
+      cta: "Let's talk about your project",
+    };
 ---
 
 <section id="certifications" class="py-20 bg-slate-50 dark:bg-slate-900">
   <div class="container mx-auto px-4">
     <div data-aos="fade-up" class="mb-16 text-center">
       <span class="inline-block py-1 px-3 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 text-sm font-medium mb-4">
-        Validations
+        {t.eyebrow}
       </span>
       <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white font-heading">
-        Certifications & Réalisations
+        {t.heading}
       </h2>
       <p class="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-slate-300">
-        Mes formations certifiées et accomplissements.
+        {t.subtitle}
       </p>
     </div>
-    
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
       <!-- Certifications -->
       <div data-aos="fade-right">
@@ -24,12 +47,12 @@ const { certifications, realisations } = portfolio;
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
             <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
           </svg>
-          Certifications
+          {t.certifications}
         </h3>
-        
+
         <div class="space-y-6">
-          {certifications.map((cert, index) => (
-            <div 
+          {certifications.map((cert: { titre: string; organisme: string; date: string }, index: number) => (
+            <div
               class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               data-aos="fade-up"
               data-aos-delay={index * 100}
@@ -61,20 +84,20 @@ const { certifications, realisations } = portfolio;
           ))}
         </div>
       </div>
-      
-      <!-- Achievements -->
+
+      <!-- Honors & Awards -->
       <div data-aos="fade-left">
         <h3 class="text-2xl font-semibold text-slate-800 dark:text-white mb-6 font-heading inline-flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-primary-500" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd" />
             <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z" />
           </svg>
-          Réalisations
+          {t.honors}
         </h3>
-        
+
         <div class="space-y-6">
-          {realisations.map((real, index) => (
-            <div 
+          {honneurs.map((real: { titre: string; description?: string; date: string }, index: number) => (
+            <div
               class="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
               data-aos="fade-up"
               data-aos-delay={index * 100}
@@ -107,14 +130,14 @@ const { certifications, realisations } = portfolio;
             </div>
           ))}
         </div>
-        
+
         <!-- Call to action -->
         <div class="mt-8 text-center" data-aos="fade-up">
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             class="inline-flex items-center justify-center px-6 py-3 border border-primary-500 text-primary-500 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors"
           >
-            Discutons de vos projets
+            {t.cta}
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>

@@ -1,74 +1,82 @@
 ---
-import portfolio from '@data/portfolio.json';
+interface Props {
+  portfolio: any;
+  lang: 'en' | 'fr';
+}
+
+const { portfolio, lang } = Astro.props;
 const { projets } = portfolio;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const t = lang === 'fr'
+  ? { eyebrow: 'Réalisations', heading: 'Mes Projets', subtitle: 'Une sélection de projets en IA et Data Science.', hint: 'Cliquez pour plus de détails', tech: 'Technologies', details: 'Voir détails' }
+  : { eyebrow: 'Portfolio', heading: 'Projects', subtitle: 'A selection of AI and software engineering projects.', hint: 'Click for details', tech: 'Technologies', details: 'View details' };
+
+const gradients = [
+  'from-primary-500 to-secondary-600',
+  'from-purple-500 to-primary-600',
+  'from-teal-500 to-primary-600',
+  'from-secondary-500 to-purple-600',
+  'from-primary-600 to-teal-500',
+  'from-purple-600 to-secondary-500',
+];
 ---
 
-<section id="projets" class="py-20 bg-white dark:bg-slate-800">
+<section id="projects" class="py-20 bg-white dark:bg-slate-800">
   <div class="container mx-auto px-4">
     <div data-aos="fade-up" class="mb-16 text-center">
       <span class="inline-block py-1 px-3 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300 text-sm font-medium mb-4">
-        Réalisations
+        {t.eyebrow}
       </span>
       <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white font-heading">
-        Mes Projets
+        {t.heading}
       </h2>
       <p class="mt-4 max-w-2xl mx-auto text-slate-600 dark:text-slate-300">
-        Une sélection de projets en IA et Data Science.
+        {t.subtitle}
       </p>
     </div>
-    
+
     <!-- Projects grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-      {projets.map((projet, index) => (
-        <div 
-          class="flip-card h-96"
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {projets.map((projet: { titre: string; type: string; periode: string; description: string; technologies: string[]; icon: string }, index: number) => (
+        <div
+          class="flip-card h-80"
           data-aos="fade-up"
-          data-aos-delay={index * 150}
+          data-aos-delay={index * 100}
         >
           <div class="flip-card-inner w-full h-full">
-            <!-- Front: Project Image -->
-            <div class="flip-card-front w-full h-full rounded-xl overflow-hidden shadow-lg group">
-              <div class="relative w-full h-full">
-                <img 
-                  src={projet.image} 
-                  alt={projet.titre} 
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent flex flex-col justify-end p-6">
-                  <span class="text-white/80 text-sm mb-2">{projet.type} | {projet.periode}</span>
-                  <h3 class="text-xl font-bold text-white font-heading">{projet.titre}</h3>
-                  
-                  <!-- Flip card hint -->
-                  <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white text-xs flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-                    </svg>
-                    Cliquez pour plus de détails
-                  </div>
-                </div>
+            <!-- Front: gradient + topical icon -->
+            <div class={`flip-card-front w-full h-full rounded-xl overflow-hidden shadow-lg bg-gradient-to-br ${gradients[index % gradients.length]} flex flex-col items-center justify-center p-6 text-center`}>
+              <div class="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center mb-4">
+                <img src={`${base}/icons/${projet.icon}.svg`} alt="" class="w-9 h-9 invert" />
+              </div>
+              <span class="text-white/70 text-xs mb-1">{projet.type} · {projet.periode}</span>
+              <h3 class="text-lg font-bold text-white font-heading">{projet.titre}</h3>
+
+              <div class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white text-xs flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 010 1.414zm-6 0a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 011.414 1.414L5.414 10l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                {t.hint}
               </div>
             </div>
-            
+
             <!-- Back: Project Details -->
             <div class="flip-card-back w-full h-full rounded-xl shadow-lg bg-primary-600 p-6 flex flex-col justify-between">
               <div>
                 <span class="text-primary-200 text-sm">{projet.type} | {projet.periode}</span>
                 <h3 class="text-xl font-bold text-white mb-4 font-heading">{projet.titre}</h3>
                 <p class="text-white/90 mb-4">{projet.description}</p>
-                
-                <h4 class="text-primary-200 text-sm font-medium mb-2">Technologies</h4>
+
+                <h4 class="text-primary-200 text-sm font-medium mb-2">{t.tech}</h4>
                 <div class="flex flex-wrap gap-2">
-                  {projet.technologies.map(tech => (
+                  {projet.technologies.map((tech: string) => (
                     <span class="inline-block py-1 px-2 bg-white/10 rounded-md text-white text-xs">
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              <button class="mt-4 w-full py-2 bg-white rounded-lg text-primary-600 font-medium hover:bg-primary-50 transition-colors">
-                Voir détails
-              </button>
             </div>
           </div>
         </div>
@@ -81,23 +89,24 @@ const { projets } = portfolio;
   .flip-card {
     perspective: 1000px;
   }
-  
+
   .flip-card-inner {
+    position: relative;
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
-  
+
   .flip-card:hover .flip-card-inner,
   .flip-card:focus .flip-card-inner {
     transform: rotateY(180deg);
   }
-  
+
   .flip-card-front,
   .flip-card-back {
     position: absolute;
     backface-visibility: hidden;
   }
-  
+
   .flip-card-back {
     transform: rotateY(180deg);
   }

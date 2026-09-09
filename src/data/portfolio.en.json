@@ -1,0 +1,331 @@
+{
+  "informations_personnelles": {
+    "nom": "Fayçal OUEDRAOGO",
+    "titre": "AI/ML Engineer · Software Engineer",
+    "email": "fayouedraogo@protonmail.com",
+    "telephone": "+226 05-29-55-50 / 60-66-88-65",
+    "adresse": "Tampouy, Ouagadougou, Burkina Faso",
+    "photo": "/images/profile.jpeg"
+  },
+  "resume_professionnel": {
+    "description": "AI/ML engineer building practical, high-impact AI systems — from large language models and speech technology for low-resource African languages to computer vision and applied research. Rigorous, curious, and driven by solving problems that matter.",
+    "objectif": "Building LLM and TTS models for Mooré and Dioula at Orange Burkina Faso, and advancing speech-technology research for underrepresented African languages."
+  },
+  "competences_techniques": [
+    {
+      "categorie": "Programming",
+      "technologies": ["Python", "C/C++", "Java", "JavaScript"]
+    },
+    {
+      "categorie": "ML & Deep Learning",
+      "technologies": ["Scikit-learn", "Seaborn", "TensorFlow", "PyTorch", "OpenCV"]
+    },
+    {
+      "categorie": "Generative AI",
+      "technologies": ["LangGraph", "RAG", "Agents", "LLM", "VLM"]
+    },
+    {
+      "categorie": "Web & Tools",
+      "technologies": ["ReactJS", "Next.js", "Django", "FastAPI", "Docker", "Git/GitHub"]
+    }
+  ],
+  "formation": [
+    {
+      "diplome": "Computer Engineering Cycle – AI & Data Science",
+      "etablissement": "École Polytechnique de Ouagadougou (EPO)",
+      "periode": "Oct. 2022 – Jan. 2026"
+    },
+    {
+      "diplome": "Full-Stack Software Engineering Programme – Frontend Specialization",
+      "etablissement": "ALX Africa",
+      "periode": "May 2022 – Sep. 2023"
+    },
+    {
+      "diplome": "Preparatory Classes in Mathematics and Physics",
+      "etablissement": "École Polytechnique de Ouagadougou (EPO)",
+      "periode": "Oct. 2020 – Aug. 2022"
+    }
+  ],
+  "experiences_professionnelles": [
+    {
+      "poste": "AI / GenAI Engineer",
+      "entreprise": "Orange Burkina Faso",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "periode": "Mar. 2026 – Present",
+      "description": [
+        "LLM and TTS models for Mooré and Dioula languages",
+        "AI agents, chatbots, and full-stack software development"
+      ]
+    },
+    {
+      "poste": "AI/ML Engineer",
+      "entreprise": "Copernilabs",
+      "lieu": "Paris, France | Remote",
+      "periode": "Dec. 2024 – Present",
+      "description": [
+        "Illegal soccer stream detection",
+        "License plate detection and recognition",
+        "Psychological analysis of interviewees from hiring interview recordings"
+      ]
+    },
+    {
+      "poste": "AI Intern (Fellow)",
+      "entreprise": "CITADEL-UVBF",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "periode": "May 2025 – Oct. 2025",
+      "description": [
+        "ASR and TTS models for Mooré",
+        "French–Mooré speech-to-speech translation"
+      ]
+    },
+    {
+      "poste": "Co-Founder",
+      "entreprise": "Archidux Solutions",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "periode": "Oct. 2023 – Present",
+      "description": [
+        "Leading AI projects",
+        "WhatsApp virtual assistants and chatbots"
+      ]
+    },
+    {
+      "poste": "AI Intern",
+      "entreprise": "CITADEL-UVBF",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "periode": "Aug. 2024 – Oct. 2024",
+      "description": [
+        "Learning assistant with RAG chatbot and multiple-choice question generator",
+        "MCQ generation via prompt engineering and LLM fine-tuning",
+        "Speaker at CITADEL & Media Workshop 2024"
+      ]
+    },
+    {
+      "poste": "Software Developer Intern",
+      "entreprise": "NeXT's BF",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "periode": "Sep. 2023 – Oct. 2023",
+      "description": [
+        "Advanced GLPI configuration and upgrade",
+        "Odoo software development"
+      ]
+    }
+  ],
+  "projets": [
+    {
+      "titre": "TTS Models for Mooré and Dioula",
+      "type": "Orange Burkina",
+      "periode": "Mar. 2026 – Present",
+      "description": "CPU-friendly text-to-speech models with voice cloning and speaker clustering for two low-resource African languages.",
+      "technologies": ["speechbrain", "KNN-VC", "VITS", "Piper", "Kokoro", "G2P"],
+      "icon": "nlp"
+    },
+    {
+      "titre": "Media Surveillance System",
+      "type": "Co-Developer | Hackathon SN 25",
+      "periode": "Nov. 2025",
+      "description": "Tracked and classified social media and news content by topic, with automatic detection and flagging of harmful posts and an audience score.",
+      "technologies": ["BeautifulSoup", "CamemBERT fine-tuned", "Detoxify"],
+      "icon": "transformers"
+    },
+    {
+      "titre": "Chatbot on Burkina Faso Tourism",
+      "type": "Co-Developer | Hackathon Digital Week 25",
+      "periode": "Nov. 2025",
+      "description": "RAG chatbot for tourism information retrieval, combining web scraping with vector search.",
+      "technologies": ["Crawl4ai", "Qdrant", "Streamlit"],
+      "icon": "langchain"
+    },
+    {
+      "titre": "WhatsApp Virtual Assistant",
+      "type": "Project Lead",
+      "periode": "Oct. – Dec. 2025",
+      "description": "24/7 WhatsApp agent with an adjustable knowledge base, human handover, and supervisor notifications.",
+      "technologies": ["n8n"],
+      "icon": "llm"
+    },
+    {
+      "titre": "French–Mooré Voice Translator",
+      "type": "End-of-Study Project at CITADEL-UVBF",
+      "periode": "May – Oct. 2025",
+      "description": "Cascaded speech-to-speech translation system pairing Mooré ASR and TTS models.",
+      "technologies": ["PyTorch", "Transformers", "FastAPI", "FastRTC", "vLLM", "HuggingFace", "React+Vite", "Vercel"],
+      "icon": "huggingface"
+    },
+    {
+      "titre": "University Uniform Compliance Monitoring",
+      "type": "Co-Developer | End-of-Year Project",
+      "periode": "Nov. 2024",
+      "description": "Computer vision system paired with an electronic door prototype for automated uniform-compliance access control.",
+      "technologies": ["Roboflow", "FastAPI", "ESP32"],
+      "icon": "computer-vision"
+    }
+  ],
+  "certifications": [
+    {
+      "titre": "B2 English Level",
+      "organisme": "Blue Diamond Leading Solutions",
+      "date": "Jun. 2026"
+    },
+    {
+      "titre": "Convolutional Neural Networks",
+      "organisme": "DeepLearning.AI",
+      "date": "Feb. 2026"
+    },
+    {
+      "titre": "Structuring Machine Learning Projects",
+      "organisme": "DeepLearning.AI",
+      "date": "Jan. 2026"
+    },
+    {
+      "titre": "Improving Deep Neural Networks: Hyperparameter Tuning, Regularization and Optimization",
+      "organisme": "DeepLearning.AI",
+      "date": "Oct. 2025"
+    },
+    {
+      "titre": "AI Learning Path",
+      "organisme": "Force-N Senegal",
+      "date": "May 2025"
+    },
+    {
+      "titre": "Neural Networks and Deep Learning",
+      "organisme": "DeepLearning.AI",
+      "date": "Jan. 2025"
+    },
+    {
+      "titre": "Machine Learning Specialization",
+      "organisme": "DeepLearning.AI & Stanford University",
+      "date": "Jan. 2024"
+    },
+    {
+      "titre": "CS50's Introduction to AI with Python",
+      "organisme": "Harvard University",
+      "date": "Nov. 2023"
+    }
+  ],
+  "honneurs": [
+    {
+      "titre": "Top Poster Award",
+      "description": "Deep Learning Indaba",
+      "date": "Aug. 2026"
+    },
+    {
+      "titre": "Scientific Paper Published",
+      "description": "French–Mooré voice translation, LoResLM @ EACL 2026",
+      "date": "Jan. 2026"
+    },
+    {
+      "titre": "Winner + Prime Minister's Favorite Special Award",
+      "description": "Digital Week 2025 · MTDPCE-BF",
+      "date": "Nov. 2025"
+    },
+    {
+      "titre": "2nd Rank, CSC Challenge",
+      "description": "Universities Hackathon, Digital Week 2025 · MTDPCE-BF",
+      "date": "Nov. 2025"
+    },
+    {
+      "titre": "Finalist, Data Science AFCON",
+      "description": "DataTour 2024",
+      "date": "Dec. 2024"
+    },
+    {
+      "titre": "2nd Rank, Programming Contest",
+      "description": "Digital Week 2023 · MTDPCE-BF",
+      "date": "Nov. 2023"
+    }
+  ],
+  "activites": [
+    {
+      "titre": "Deep Learning Indaba 2026",
+      "role": "IndabaX Burkina & Poster Presenter",
+      "lieu": "Lagos, Nigeria",
+      "date": "Aug. 2026",
+      "description": "Award-winning poster presentation and networking with the African AI research community."
+    },
+    {
+      "titre": "EPO Alumni Association",
+      "role": "Partnerships & Insertion Committee Member",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "date": "Jun. 2026 – Present",
+      "description": "Facilitating industry–university relations and job/internship opportunities."
+    },
+    {
+      "titre": "LoResLM @ EACL 2026",
+      "role": "Poster Session Presenter",
+      "lieu": "Rabat, Morocco",
+      "date": "Mar. 2026",
+      "description": "Presented research on French–Mooré voice translation."
+    },
+    {
+      "titre": "AMLD Africa – NODE Burkina Faso",
+      "role": "Speaker",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "date": "Jan. 2026",
+      "description": "Talk on Mooré speech recognition, synthesis, and voice translation."
+    },
+    {
+      "titre": "African Startup Conference 2025",
+      "role": "Founder & Member of the Burkinabè Delegation",
+      "lieu": "Algiers, Algeria",
+      "date": "Dec. 2025",
+      "description": "Panels on entrepreneurship and AI workshops."
+    },
+    {
+      "titre": "Café RH",
+      "role": "Hands-on AI Workshop Facilitator",
+      "lieu": "Tenkodogo, Burkina Faso",
+      "date": "Sep. 2025",
+      "description": "Workshop on AI's threats and opportunities for HR professionals, with hands-on prompt engineering."
+    },
+    {
+      "titre": "IndabaX Burkina 2025",
+      "role": "Speaker",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "date": "Aug. 2025",
+      "description": "Presented Mooré speech synthesis models and French → Mooré translation progress."
+    },
+    {
+      "titre": "AJMUH Webinar",
+      "role": "Speaker",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "date": "Aug. 2025",
+      "description": "Discussion on AI's threats and opportunities in the professional world."
+    },
+    {
+      "titre": "Huawei Seeds For The Future 2025",
+      "role": "Seed & Member of the Burkinabè Delegation",
+      "lieu": "Shenzhen, China",
+      "date": "Jul. 2025",
+      "description": "Training on AI and telecommunications; visits to Huawei, DJI, and Smart AI Governance sites."
+    },
+    {
+      "titre": "EPO Computer Science Club (CIE)",
+      "role": "Vice-President & Trainer",
+      "lieu": "Ouagadougou, Burkina Faso",
+      "date": "Mar. 2024 – Feb. 2025",
+      "description": "Organized hands-on workshops and RAG chatbot design training."
+    }
+  ],
+  "langues": [
+    { "langue": "French", "niveau": "Native" },
+    { "langue": "English", "niveau": "B2" }
+  ],
+  "soft_skills": ["Critical thinking", "Rigor", "Team work", "Scientific curiosity"],
+  "centres_interet": ["Sport (Soccer, Athletics)", "History & Geopolitics", "AI news", "Movies"],
+  "sections_portfolio": [
+    { "id": "home", "label": "Home" },
+    { "id": "about", "label": "About" },
+    { "id": "skills", "label": "Skills" },
+    { "id": "education", "label": "Education" },
+    { "id": "experience", "label": "Experience" },
+    { "id": "projects", "label": "Projects" },
+    { "id": "certifications", "label": "Certifications" },
+    { "id": "activities", "label": "Activities" },
+    { "id": "contact", "label": "Contact" }
+  ],
+  "liens_professionnels": {
+    "github": "https://github.com/Minervus00",
+    "linkedin": "https://www.linkedin.com/in/faycal-ouedraogo-b21690268/",
+    "portfolio": "https://minervus00.github.io/portfolio"
+  }
+}
